@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hooks_01</title>
+</head>
+
+
+<body>
+
+    <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+    
+    <script type="text/babel">
+
+        /*
+
+        class component : constructor에서 state정의 / setState()에서 업데이트
+        => function component Hooks
+
+        useState() : state를 사용하기 위한 Hooks / const [변수명, set함수명] = useState(초기값) / 선언은 반드시 최상위에서 해야함 / function component에서만 사용함
+
+        useEffect() : class component에서의 Lifecycle과 같은 역할
+        => componentDidMount(), componentDidUpdate(), componentWillUnmount()
+        / 다른 컴포넌트에 영향을 미치지 않도록 rendering이 끝난 다음에 실행 - side_effect
+
+        */
+
+        // useState() Hooks
+        const rootElement = document.getElementById('root')
+
+            function Counter(props) {
+                const [count, setCount] = React.useState(0)
+
+                React.useEffect(() => {
+                    document.title = `총 ${count}번 클릭`
+                })
+
+                // }, []) : 의존성 배열 => 생략:컴포넌트가 업데이트 될 때마다 호출되어 실행
+                                         // 값생략(빈배열) : 마운트와 언마운트시에만 실행
+
+                return (
+                    <div>
+                        <p>총 {count}번 클릭</p>
+                        <button onClick={() => setCount(count + 1)}>click</button>    
+                    </div>
+                )
+            }
+
+        ReactDOM.render(<Counter />, rootElement)
+              
+
+
+    </script>
+    
+    
+</body>
+</html>

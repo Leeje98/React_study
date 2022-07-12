@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_test_12_이벤트</title>
+    <!-- (완료한 파일에 숫자를 붙여주고 작업은 index파일 그대로 간다) -->
+</head>
+
+
+
+    <!--
+
+        node.js : javascript를 웹브라우저에서 독립시켜 로컬서버를 사용하여 어플리케이션을 실행할 수 있도록 해주는 소프트웨어 플랫폼
+        npm : nodejs 패키지 매니저(package.json)
+        npx : npm 패키지 실행기 => 로컬서버구동(CRA :create-react-app) => npx serve
+
+    -->
+
+<body>
+
+    <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+
+        const state = {
+            keyword: '',
+            result: '',
+            typing: false
+        }
+
+        const App = () => {
+            function handleChange(event) {
+                setState({
+                    typing: true,
+                    keyword: event.target.value
+                })
+            }
+
+            function handleClick() {
+                setState({
+                    typing: false,
+                    result: `지금까지 입력한 텍스트 ${state.keyword}`
+                })
+            }
+
+            return (
+                <>
+                <input onChange = {handleChange} />
+                <button onClick = {handleClick}>click</button>
+                <h2>
+                    {state.typing ? `지금은 텍스트 입력중 ${state.keyword}...` : state.result}
+                </h2>
+                </>
+            )
+
+        }
+
+        function setState(newState) {
+            Object.assign(state, newState)
+            render()
+        }
+        
+        function render() {
+            ReactDOM.render(<App />, rootElement)
+        }
+
+        render()        
+
+
+    </script>
+    
+    
+</body>
+</html>

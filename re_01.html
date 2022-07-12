@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_Test01</title>
+</head>
+<body>
+
+    <div id="root"></div>
+    
+    <!-- React_cdn / 리엑트 연결 -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- BABEL unpkg / 바벨 연결 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        /* 자바스크립트 방법
+        const rootElement = document.getElementById('root')
+        const h1 = document.createElement('h1')
+        h1.setAttribute('className', 'title')
+        h1.textContent = "Hello, React!!"
+        rootElement.appendChild(h1)
+        */
+
+
+        // const rootElement = document.getElementById('root')
+
+        // 1)React.createElement('component', props, 'children')
+        // const element = React.createElement('h1', null, 'Hello, React~~')
+
+        // 2)React.createElement('type', {children})             ----제일 많이 사용하는 형태
+        // const element = React.createElement('h1', {children: 'hello, React!!'})
+
+        // 3)React.createElement('type', ['children', 'children'])
+        // const element = React.createElement('h1', null, ['Hello!', 'React!'])
+
+        /*
+        const element = React.createElement(
+            'h1',
+            {
+                className: 'title', 
+                // children: 'Hello, React~~'
+                children: ['Hello, React', 'Bye, JavaScript~~']
+            }
+        )
+        */
+
+        /* 
+        하나의 부모에 두명의 형제 자식은 이런형식으로 만들수 없다(나중에 입력된 자식이 먼젓번 자식을 덮어씌움) => Fragment이용
+        const element01 = React.createElement('span', null, 'Hello, React!')
+        const element02 = React.createElement('span', null, 'Bye, JavaScript~')
+
+        ReactDOM.render(element02, rootElement)
+        ReactDOM.render(element01, rootElement)
+        */
+
+
+
+        // JSX : BABEL Compiler
+
+        const rootElement = document.getElementById('root')
+
+        // const element = <h1 className='title'>Hello, React!!</h1>
+
+        const userClassName = 'title'
+        const text = 'Hello, React~~'
+
+        //1) const element01 = <h1 className={userClassName}> {text} </h1>
+        //2) const element02 = <h1 className={userClassName} children={text}></h1>
+        const element03 = <h1 className={userClassName} children={text} />
+
+
+        ReactDOM.render(element03, rootElement)
+
+
+        /*
+        class 대신 className 사용
+        단독으로 사용되는 태그는 반드시 닫는 기호를 넣음 : <br /> <green /> -- 태그를 만들어서 쓸수있다
+        if문 대신 삼항연산자 사용
+        */
+
+    </script>
+
+
+</body>
+</html>

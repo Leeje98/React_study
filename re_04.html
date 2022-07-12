@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_Test_03</title>
+    <style>
+
+        
+    </style>
+</head>
+<body>
+    
+    <nav class="gnb"></nav>
+    <div class="logo"></div>
+    <ul class="lnb">
+
+    </ul>
+    
+    <!-- React_cdn / 리엑트 연결 -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- BABEL unpkg / 바벨 연결 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        const rootElementGnb = document.querySelector('.gnb')
+        const rootElementLogo = document.querySelector('.logo')
+        const rootElementLnb = document.querySelector('.lnb')
+
+        const gnbelement = (
+            <ul 
+            className = 'gnb_ul'
+            children = {[
+                <li>로그인</li>,
+                <li>회원가입</li>,
+                <li>사이트맵</li>
+            ]}
+            />
+        )
+
+        ReactDOM.render(gnbelement, rootElementGnb)
+
+
+        const logoElement = <div className='logo_text' children={'Front_End'} />
+
+        ReactDOM.render(logoElement, rootElementLogo)
+
+
+        const lnbElement = (
+            <>
+                <li className='html'>HTML5</li>
+                <li>CSS3</li>
+                <li>jQuery</li>
+                <li>JavaScript</li>
+                <li>React</li>
+            </>
+        )
+
+        ReactDOM.render(lnbElement, rootElementLnb)
+
+    </script>
+
+
+
+
+
+</body>
+</html>

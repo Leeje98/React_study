@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_01</title>
+</head>
+
+
+<body>
+
+    <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+
+        // ReactDOM.render(<h1>Hello, world!</h1>, rootElement)
+
+        // const name = 'Josh Perez'
+        // const element = <h1>Hello, {name}</h1>
+
+        // ReactDOM.render(element, rootElement)
+
+        // function formatName(user) {
+        //     return user.firstName + ' ' + user.lastName;
+        // }
+
+        // const user = {
+        //     firstName: 'Harper',
+        //     lastName: 'Perez'
+        // }
+
+        // const element = (
+        //     <h1>Hello, {formatName(user)}!</h1>
+        // )
+
+        // ReactDOM.render(element, rootElement)
+
+        // function getGreeting(user) {
+        //     if (user) {
+        //         return <h1>Hello, {formatName(user)}!</h1>
+        //     }
+        //     return <h1>Hello, Stranger.</h1>
+        // }
+
+        // function tick() {
+        //     const element = (
+        //         <div>
+        //             <h1>Hello, world</h1>
+        //             <h2>It is {new Date().toLocaleTimeString()}</h2>
+        //         </div>
+        //     )
+        //     ReactDOM.render(element, rootElement)
+        // }
+
+        // setInterval(tick, 1000)
+
+        // toLocaleTimeString() : 사용자의 문화권에 맞는 시간표기법으로 시간을 리턴 ex)1980년 1월 3일 목요일 오전 1:28:35
+
+        // function Welcome(props) {
+        //     return <h1>Hello, {props.name}</h1>
+        // }
+
+        // React의 관점에서 볼 때 위 아래 두 가지 유형의 컴포넌트는 동일하다.
+
+        // class Welcome extends React.Component {
+        //     render() {
+        //         return <h1>Hello, {this.props.name}</h1>
+        //     }
+        // }
+
+        // function Welcome(props) {
+        //     return <h1>Hello, {props.name}</h1>
+        // }
+
+        // function App() {
+        //     return (
+        //         <div>
+        //             <Welcome name='Sara' />
+        //             <Welcome name='Cahal' />
+        //             <Welcome name='Edite' />
+        //         </div>
+        //     )
+        // }
+
+        // ReactDOM.render(<App />, rootElement)
+
+
+        // function Comment(props) {
+        // return (
+        // <div className="Comment">
+        //     <UserInfo user={props.author} />
+        //     <div className="Comment-text">
+        //         {props.text}
+        //     </div>
+        //     <div className="Comment-date">
+        //         {formatDate(props.date)}
+        //     </div>
+        // </div>
+        // )
+        // }
+
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {date: new Date()}
+            }
+            render() {
+                return (
+                <div>
+                    <h1>Hello, world!</h1>
+                    <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+                </div>
+                )
+            }
+        }
+
+        // function tick() {
+        //     ReactDOM.render(
+        //         <Clock date={new Date} />, rootElement
+        //     )
+        // }
+
+        // setInterval(tick, 1000)
+
+
+
+        ReactDOM.render(<Clock />, rootElement)
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

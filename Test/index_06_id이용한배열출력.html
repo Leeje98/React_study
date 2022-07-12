@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_test_04</title>
+    <!-- (완료한 파일에 숫자를 붙여주고 작업은 index파일 그대로 간다) -->
+</head>
+
+
+
+    <!--
+
+        node.js : javascript를 웹브라우저에서 독립시켜 로컬서버를 사용하여 어플리케이션을 실행할 수 있도록 해주는 소프트웨어 플랫폼
+        npm : nodejs 패키지 매니저(package.json)
+        npx : npm 패키지 실행기 => 로컬서버구동(CRA :create-react-app) => npx serve
+
+    -->
+
+<body>
+
+    <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+
+        function ListComponent(props) {
+            return <li>Hello, {props.title}</li>
+        }
+/*
+        function UlComponent(props) {
+            return (
+                <ul>
+                    <ListComponent title='React!' />
+                    <ListComponent title='Javascript!' />
+                    <ListComponent title='HTML!' />
+                </ul>  //ul의 자식으로 text노드와 li를 가질 수 있다
+            )
+        }
+
+        ReactDOM.render(<UlComponent />, rootElement)
+*/
+
+        const elements = [
+            {
+                id:1,
+                title: 'React!'
+            },
+            {
+                id: 2,
+                title: 'javaScript!'
+            },
+            {
+                id: 3,
+                title: 'HTML5!'
+            }
+        ]
+
+        function UlComponent(props) {
+            return (
+                <ul>
+                    {elements.map((element) => {
+                        return (
+                            <ListComponent Key={element.id} title={element.title} />
+                        )
+                    })}
+                </ul>
+            )
+        }
+
+        
+        ReactDOM.render(<UlComponent />, rootElement)
+
+
+    </script>
+    
+</body>
+</html>

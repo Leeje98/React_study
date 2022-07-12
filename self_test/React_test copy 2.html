@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_test</title>
+</head>
+<style>
+
+
+    /* ul {
+        display: flex;
+        justify-content: end;
+        margin-top: 100px;
+        margin-right: 50px;
+    } 
+    li {
+        list-style: none;
+        padding: 0 15px;
+    } */
+
+
+
+</style>
+<body>
+
+
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+
+        const rootElement = document.getElementById('root')
+
+        // function Component(props) {
+        //     return (
+        //         <div><ListComponent /></div>
+        //     )
+        // }
+
+
+            function ListComponent(props) {
+                return <li>{props.text}</li>
+            }
+
+            const elements = [
+                {
+                    id:1,
+                    text: 'Login'
+                },
+                {
+                    id:2,
+                    text: 'Join'
+                },
+                {
+                    id:3,
+                    text: 'search'
+                }
+            ]
+
+            function GnbComponent(props) {
+                return (
+                    <ul>
+                        {elements.map((element) => {
+                            return (
+                                <ListComponent key={element.id} text={element.text} />
+                            )
+                        })}
+                    </ul>
+                )
+            }
+
+        
+
+
+            function LnbComponent(props) {
+                return (
+                    <>
+                        <li>{props.title}</li>
+                    </>
+                )
+            }
+
+            const titles = [
+                {title: 'HTML5'},
+                {title: 'CSS3'},
+                {title: 'jQuery'},
+                {title: 'JavaScript'},
+                {title: 'React'}
+            ]
+
+            function TitleList(props) {
+                return (
+                    <div>
+                        {titles.map((title) => {
+                            return (
+                                <Title title={title.title} />
+                            )
+                        })}
+                    </div>
+                )
+            }
+
+
+            function Component(props) {
+                return (
+                    <>
+                    <GnbComponent />
+                    <LnbComponent />
+                    </>
+                )
+            }
+
+            // function render() {
+            //     ReactDOM.render(<Component />, rootElement)
+            // }
+
+            // render()
+
+        ReactDOM.render(<Component />, rootElement)
+
+
+    </script>
+    
+</body>
+</html>

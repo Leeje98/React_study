@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_Test_05</title>
+</head>
+<body>
+    
+    <div id="root"></div>
+    
+    <!-- React_cdn / 리엑트 연결 -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- BABEL unpkg / 바벨 연결 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+
+        /*
+        const EnglishWord = function() {            // 함수를 사용할때 함수 첫글자는 대문자를 쓴다
+            return (
+                <>
+                    <h3>Good</h3>
+                    <span>좋은</span>
+                </>
+            )
+        }       
+        
+        // const element = EnglishWord
+
+        const element = (
+            <>
+                {EnglishWord()}
+                {EnglishWord()}
+                {EnglishWord()}
+            </>
+        )
+        */
+        
+        // const EnglishWord = function(word, mean) {
+        //     return (
+        //         <>
+        //             <h3>{word}</h3>
+        //             <span>{mean}</span>
+        //         </>
+        //     )
+        // }
+
+
+        /*
+        const EnglishWord = (word, mean) => (
+                <>
+                    <h3>{word}</h3>
+                    <span>{mean}</span>
+                </>
+        )
+
+        const element = (
+            <>
+                {EnglishWord('Good', '좋은')}
+                {EnglishWord('Bad', '나쁜')}
+                {EnglishWord('Happy', '행복한')}
+            </>
+        )
+        */
+
+        const EnglishWord = ({word, mean}) => (
+                <>
+                    <h3>{word}</h3>
+                    <span>{mean}</span>
+                </>
+        )
+
+        const element = (
+            <>
+                <EnglishWord word='Good' mean='좋은' />
+                <EnglishWord word='Bad' mean='나쁜' />
+                <EnglishWord word='Happy' mean='행복한' />
+            </>                                                  // 태그형식으로 사용하는 방법 & 태그작성법
+        )
+
+
+
+        ReactDOM.render(element, rootElement)
+
+    </script>
+
+
+
+
+
+</body>
+</html>

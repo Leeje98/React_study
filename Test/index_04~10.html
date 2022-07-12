@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_test_04~10</title>
+    <!-- (완료한 파일에 숫자를 붙여주고 작업은 index파일 그대로 간다) -->
+</head>
+
+
+
+    <!--
+
+        node.js : javascript를 웹브라우저에서 독립시켜 로컬서버를 사용하여 어플리케이션을 실행할 수 있도록 해주는 소프트웨어 플랫폼
+        npm : nodejs 패키지 매니저(package.json)
+        npx : npm 패키지 실행기 => 로컬서버구동(CRA :create-react-app) => npx serve
+
+    -->
+
+<body>
+
+    <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+
+        
+        /*
+        function Welcome(props) {
+            return <h1>Hello. {props.title}</h1>
+        }
+
+                 
+        Welcome.defaultProps = {
+            title: 'React!!'
+        }
+
+        const element = (
+            <>
+            <Welcome />
+            <Welcome title='Javascript'/>
+            </>
+        )        
+
+        ReactDOM.render(element, rootElement)
+        // ReactDOM.render(<Welcome title='React!' />, rootElement)\
+        04*/
+
+        /*
+        function Welcome(props) {
+            return (
+                <>
+                    <h1>Hello, {props.title}</h1>
+                    <h2>Myname is {props.name}</h2>
+                </>
+            )
+        }
+
+        const element = (
+            <>
+                <Welcome title='React' name='Hong Gil-dong' />
+                <Welcome title='Javascript' name='Yoon Dong-ju' />
+            </>
+        )
+
+        // ReactDOM.render(<Welcome title='React!!' name='Hong Gil-dong' />, rootElement)
+        ReactDOM.render(element, rootElement)
+        05*/
+
+
+        /*
+        function ListComponent(props) {
+            return <li>Hello, {props.title}</li>
+        }
+
+        
+        // function UlComponent(props) {
+        //     return (
+        //         <ul>
+        //             <ListComponent title='React!' />
+        //             <ListComponent title='Javascript!' />
+        //             <ListComponent title='HTML5!' />
+        //         </ul>
+        //     )
+        // }
+        
+        // ReactDOM.render(<UlComponent />, rootElement)
+        
+
+        const elements = [
+            {
+                id: 1,
+                title: 'React!'
+            },
+            {
+                id: 2,
+                title: 'javaScript!'
+            },
+            {
+                id: 3,
+                title: 'HTML5!'
+            }
+        ]
+
+        function UlComponent(props) {
+            return (
+                <ul>         // r- map() : 배열 컨트롤
+                    {elements.map((element) => {
+                        return (
+                            <ListComponent key={element.id} title={element.title} />
+                                    // ㄴ- key : 엘리먼트 리스트를 만들 때 포함해야 하는 특수한 문자열 어트리뷰트
+                                    // ㄴ- key : (id : 자바스크립트의 인덱스 번호 역할)
+                        )
+                    })}
+                </ul>
+            )
+        }
+
+        ReactDOM.render(<UlComponent />, rootElement)
+        06*/
+
+        /*
+        function Comment(props) {
+            return (
+                <>
+                    <span>{props.name}</span>
+                    <span>{props.comment}</span>
+                    <br />
+                </>
+            )
+        }
+
+        const comments = [
+            {name: 'Hong Gil-dong', comment: '안녕하세요, 리엑트는 처음입니다.'},
+            {name: 'Yoon Dong-ju', comment: '나도 처음입니다.'}
+        ]
+
+        function CommentList(props) {
+            return (
+                <div>
+                    {comments.map((comment) => {
+                        return (
+                            <Comment name={comment.name} comment={comment.comment} />
+                        )
+                    })}
+                </div>
+            )
+        }
+
+        ReactDOM.render(<CommentList />, rootElement)
+        07*/
+
+
+        /*
+        class Welcome extends React.Component {
+            constructor(props) {
+            // ㄴ- Component를 생성할 때 state 값을 초기화하거나 메서드를 바인딩할 때 construcotr()를 사용
+            // ㄴ- Component를 상속한 컴포넌트의 생성자를 구현할 때는 super(props)를 선언을 권고 : 
+                                          // ㄴ- this.props 사용 시 생성자 내에서 정의되지 않아 버그 발생 가능성이 생기기 때문
+                super(props)
+            }
+
+            render() {
+                return (
+                    <h1>Hello, React!</h1>
+                )
+            }
+        }
+
+        ReactDOM.render(<Welcome />, rootElement)
+        08*/
+
+        
+        /*
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+
+                this.state = {
+                    age: 20
+                }
+            }
+
+            render() {
+                return (
+                    <div>
+                        <h2>Hello {this.props.name} - {this.state.age}</h2>
+                    </div>
+                )
+            }
+
+            componentDidMount() {
+                setInterval(() => {
+            //setInterval : React 엘리먼트는 불변객체-업데이트하는 유일한 방법. 새로운 엘리먼트를 생성하고 이를 ReactDOM.render()로 전달하는 방식
+                    this.setState((state) => ({
+                        age: state.age + 1
+                    }))
+                }, 1000)
+            }
+        }
+
+        ReactDOM.render(<App />, rootElement)
+        09*/
+
+        class Schedule extends React.Component {
+            constructor(props) {
+                super(props)
+
+                this.state = {}
+            }
+
+            render() {
+                return (
+                    <div>
+                        <span>{this.props.message}</span>
+                    </div>
+                )
+            }
+        }
+
+        const reservedMessages = [
+            {id: 1, message: '오늘의 일정'},
+            {id: 2, message: '오전 정규회의'},
+            {id: 3, message: '점심 시간'},
+            {id: 4, message: '클라이언트 미팅'}
+        ]
+
+        let timer;
+
+        class ListSchadule extends React.Component {
+            constructor(props) {
+                super(props)
+
+                this.state = {
+                    messages: []
+                }
+            }
+
+            componentDidMount() {
+                const { messages } = this.state
+                timer = setInterval(() => {
+                    if (messages.length < reservedMessages.length) {
+                        const index = messages.length
+                        messages.push(reservedMessages[index])
+                        this.setState({
+                            messages: messages
+                        })
+                    } else {
+                        clearInterval(timer)
+                    }
+                }, 1000)
+            } 
+
+            render() {
+                return (
+                    <div>
+                        {this.state.messages.map((message) => {
+                            return (
+                                <Schedule key={message.id} message={message.message} />
+                            )
+                        })}
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<ListSchadule />, rootElement)
+
+
+
+
+
+        
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

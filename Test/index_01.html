@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_test</title>
+</head>
+
+    <!--
+
+        node.js : javascript를 웹브라우저에서 독립시켜 로컬서버를 사용하여 어플리케이션을 실행할 수 있도록 해주는 소프트웨어 플랫폼
+        npm : nodejs 패키지 매니저(package.json)
+        npx : npm 패키지 실행기 => 로컬서버구동(CRA :create-react-app) => npx serve
+
+    -->
+
+<body>
+
+    <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        /************** component ****************/
+        /*
+          - component 내부에 state가 존재 => class component
+          - Lifecycle을 사용 - class componint
+          - component 내부에 state가 존재하지 않고, liftcycle을 사용하지 않음 => function component
+
+          cf. Hooks으로 state를 관리할 경우 관계없다 (클래스나 평션중 아무거나 써도 된다)
+        */
+
+        const rootElement = document.getElementById('root')
+
+        // class Component extends React.Component {
+        //     render() {
+        //         return <h1>Hello, React!</h1>
+        //     }
+        // }
+
+        // function Component() {             // 간단한건 화살표함수, 속성이 들어가면 일반 문법 사용
+        const Component = () => {
+            return <h1>Bye, Javascript~~</h1>
+        }
+        
+        ReactDOM.render(<Component />, rootElement)
+
+
+    </script>
+    
+</body>
+</html>

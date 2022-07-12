@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_test_03</title>
+    <!-- (완료한 파일에 숫자를 붙여주고 작업은 index파일 그대로 간다) -->
+</head>
+
+
+
+    <!--
+
+        node.js : javascript를 웹브라우저에서 독립시켜 로컬서버를 사용하여 어플리케이션을 실행할 수 있도록 해주는 소프트웨어 플랫폼
+        npm : nodejs 패키지 매니저(package.json)
+        npx : npm 패키지 실행기 => 로컬서버구동(CRA :create-react-app) => npx serve
+
+    -->
+
+<body>
+
+    <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        /*
+
+          컴포넌트를 기준으로 데이터생성 위치
+          props : 속성 / 컴포넌트 외부에서 데이터가 생성되어서 안쪽으로 넘어옴
+          state : setter / 컴포넌트 내부의 데이터를 변경할수 있는것
+
+          render() : props와 state를 기반으로 화면에 결과를 그림
+
+        */
+
+        
+        const rootElement = document.getElementById('root')
+
+            class Component extends React.Component {
+
+
+                // constructor(props) {
+                //     super(props)
+                //     this.state = { count: 0 }
+                // }          
+                // 써도 상관 없으나 굳이 명시하지 않아도 된다
+
+                state = { count: 0 }
+
+                // state.count = 0   // 이런 단독 변수로 사용하면 안된다
+
+                render() {    // render()는 React.Component의 하위 class에서 반드시 정의해야 하는 메서드
+                    return (
+                        <div>
+                        <h3>{this.props.greet} 클래스 상태변화</h3>
+                        <h1>{this.state.count}</h1>
+                        </div>
+                    )
+                }
+
+                componentDidMount() {
+                    setInterval( () => {
+                        this.setState({
+                            //ㄴsetState : 셋터 역할. 새로운 값을 만든다
+                            count: this.state.count + 1
+                        })
+                    }, 1000)
+                }
+
+            }
+        
+        ReactDOM.render(<Component greet='Good~ ' />, rootElement)
+
+
+    </script>
+    
+</body>
+</html>

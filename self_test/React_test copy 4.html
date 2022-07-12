@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_test</title>
+</head>
+<style>
+
+    #root {
+        width: 1100px;
+        margin: 0 auto;
+    }
+
+    li {
+        list-style: none;
+    } 
+
+    .GnbMemu {
+        display: flex;
+        justify-content: end;
+        margin-top: 100px;
+    } 
+
+    .GnbMemu li {
+        padding: 0 15px;
+    } 
+
+    .LnbMenu {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+    }
+
+    .LnbMenu li {
+        background-color: #f6f6f6;
+        flex: 1;
+        text-align: center;
+        border: 1px solid #333;
+        padding: 5px 0;
+    }
+
+    button {
+        display: block;
+        margin: 0 auto;
+        padding: 5px 10px;
+        text-align: center;
+    }
+
+
+
+</style>
+<body>
+
+
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+
+        const rootElement = document.getElementById('root')
+
+
+            function ListGnbComponent(props) {
+                return <li>{props.text}</li>
+            }
+
+            const elements = [
+                {
+                    id:1,
+                    text: 'Login'
+                },
+                {
+                    id:2,
+                    text: 'Join'
+                },
+                {
+                    id:3,
+                    text: 'search'
+                }
+            ]
+
+            function GnbComponent(props) {
+                return (
+                    <ul className='GnbMemu'>
+                        {elements.map((element) => {
+                            return (
+                                <ListGnbComponent key={element.id} text={element.text} />
+                            )
+                        })}
+                    </ul>
+                )
+            }
+
+
+        function LnbElement(props) {
+            return (
+            <ul className='LnbMenu'>
+                <ListGnbComponent text='HTML5' />
+                <ListGnbComponent text='CSS3' />
+                <ListGnbComponent text='jQuery' />
+                <ListGnbComponent text='JavaScript' />
+                <ListGnbComponent text='React' />
+            </ul>
+            )
+        }
+
+
+        function handleMouseOver(props) {
+            return (
+                alert('Hi~~~')
+            )
+        } 
+
+        function handleMouseOut(props) {
+            return (
+                alert('Bye~~~')
+            )
+        } 
+
+        // function element = (
+        //     .LnbMenu li {
+        //     onMouseOver = {handleMouseOver}
+        //     onMouseOut = {handleMouseOut}
+        // }
+        // )
+
+        
+
+        
+        function handleClick() {
+            alert('방문을 환영합니다')
+        }
+        
+
+
+
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+
+                this.state = {
+                    personnel: 0
+                }
+            }
+
+            render() {
+                return (
+                    <div>
+                    <span>방문자수 : {this.state.personnel}명</span>    
+                    </div>
+                )
+            }
+
+            componentDidMount() {
+                setInterval(() => {
+                    this.setState((state) => ({
+                        personnel: state.personnel + 1
+                    }))
+                }, 1000)
+            }
+
+        }
+
+
+
+
+        function Component(props) {
+            return (
+                <>
+                <GnbComponent />
+                <LnbElement />
+                <button onClick = {handleClick}>버튼을 클릭해 주세요</button>
+                <App />
+                </>
+            )
+        }
+
+        ReactDOM.render(<Component />, rootElement)
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React_Test_03</title>
+    <style>
+
+        .title {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="root"></div>
+    
+    <!-- React_cdn / 리엑트 연결 -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- BABEL unpkg / 바벨 연결 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        /************** React element 생성 ***************/
+
+        const rootElement = document.getElementById('root')
+
+        // const element = React.createElement('p', null, 'child01')
+        // const element = React.crateElement('p', {children: 'child02'})
+
+        // const element = React.createElement('p', null, ['child03, child04'])
+        // const element = React.createElement('p', {children:['child05', 'child06']})
+
+        // const element = React.createElement('p', {className:'title', children:'child07'})
+
+        // const element = React.createElement(
+        //     'p', 
+        //     {
+        //         className:'title', 
+        //         children:'child07'
+        //     }
+        // )
+
+
+
+        /************** JSX element 생성 ***************/
+
+        // const element = <p className='title'>child08</p>
+        // const element = <p className='title' children='child09'></p>
+        // const element = <p className='title' children='child10' />             /* 사용 */
+
+        /*
+        const text = 'child11'
+        const userClassName = 'tilte'                                          // 사용
+        
+        const element = <p className={userClassName} children={text} />
+        */
+
+
+        // const props = {
+        //     className: 'title',
+        //     children: 'child13'
+        // }
+
+        // const element = <p className={props.className} children={props.children} />
+        // const element = <p {...props} />   // spread 연산자 (...)
+
+
+        // const element = (   // (): 객체나 배열이 아니라 그냥 여러개를 쓰겠다 라는 뜻으로 쓴다
+        //     <React.Fragment
+        //         children = {[
+        //             <p>child14</p>,
+        //             <p>child15</p>,
+        //             <p>child16</p>
+        //         ]}
+        //     />
+        // )
+
+        // const element = (
+        //     <React.Fragment>
+        //         <p>child17</p>
+        //         <p>child18</p>
+        //         <p>child19</p>
+        //     </React.Fragment>
+        // )
+
+        const element = (
+            <>
+                <p>child20</p>
+                <p>child21</p>
+                <p>child22</p>
+            </>
+        )
+
+
+        ReactDOM.render(element, rootElement)
+
+
+        /*
+        객체는 :  (리액트)
+        속성은 =   (JSx)
+        */
+
+    </script>
+
+
+
+
+
+</body>
+</html>
